@@ -5,8 +5,9 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Controller\Controller;
 
-class ArticleController
+class ArticleController extends Controller
 {
     /**
      * @Route("/")
@@ -14,6 +15,6 @@ class ArticleController
      */
     public function index()
     {
-        return new Response('<h1>Hi</h1>');
+        return $this->render('articles/index.html.twig');
     }
 }
