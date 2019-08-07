@@ -30,7 +30,7 @@ class ArticleController extends Controller
       * @Route("/article/new", name="new_article")
       * @Method({"GET", "POST"})
       */
-      public function new()
+      public function new(Request $request)
       {
           $article = new Article();
 
@@ -45,6 +45,18 @@ class ArticleController extends Controller
                            'attr' => array('class' => 'btn btn-primary mt-3')
                        ))
                        ->getForm();
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $article = $form->getData();
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($article);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('article_list');
+            }
 
             return $this->render('articles/new.html.twig', [
                 'form' => $form->createView()
