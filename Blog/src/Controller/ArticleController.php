@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="article_list")
      * @Method({"GET"})
      */
     public function index()
@@ -26,11 +26,16 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/{id}")
-     * @Method({"GET"})
+     * @Route("/article/{id}", name="article_show")
      */
-     public function show()
+     public function show($id)
      {
-         
+         $article = $this->getDoctrine()
+                         ->getRepository(Article::class)
+                         ->find($id);
+
+        return $this->render('articles/show.html.twig', [
+            'article' => $article
+        ]);
      }
 }
