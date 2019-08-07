@@ -16,24 +16,21 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return $this->render('articles/index.html.twig');
+        $articles = $this->getDoctrine()
+                         ->getRepository(Article::class)
+                         ->findAll();
+
+        return $this->render('articles/index.html.twig', [
+            'articles' => $articles
+        ]);
     }
 
     /**
-     * @Route("/article/create")
+     * @Route("/article/{id}")
+     * @Method({"GET"})
      */
-     public function save()
+     public function show()
      {
-         $entityManager = $this->getDoctrine()->getManager();
-
-         $article = new Article();
-         $article->setTitle("Article one");
-         $article->setBody('body one');
-
-         $entityManager->persist($article);
-
-         $entityManager->flush();
-
-         return new Response('save new article of id ' . $article->getId());
+         
      }
 }
