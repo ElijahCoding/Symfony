@@ -40,6 +40,15 @@ class PostController extends AbstractController
          if ($form->isSubmitted() && $form->isValid()) {
              // entity manager
              $em = $this->getDoctrine()->getManager();
+             $file = $request->files->get('attachment');
+             if ($file) {
+                 $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+
+                 $file->move(
+                     $this->getParameter('uploads_dir'),
+                     $filename
+                 );
+             }
              $em->persist($post);
              $em->flush();
 

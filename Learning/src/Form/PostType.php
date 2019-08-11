@@ -15,7 +15,7 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('attachment', FileType::class, [
-                
+                'mapped' => false
             ])
             ->add('save', SubmitType::class, [
                 'attr' => [
