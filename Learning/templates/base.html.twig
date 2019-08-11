@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{ path('custom', { name: 'elijah' }) }}">Custom</a>
                     </li>
 
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item float-right">
                             <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
                         </li>
