@@ -1,13 +1,10 @@
-<?php
-$sample_videos = [289729765,238902809,150870038,219727723,289879647,261379936,289029793,60594348,290253648];
-?>
+{% extends 'base.html.twig' %}
 
-<?php include('includes/_header.php'); ?>
-<?php include('includes/_menu.php'); ?>
+{% block main %}
+    {% set sample_videos = [289729765,238902809,150870038,219727723,289879647,261379936,289029793,60594348,290253648] %}
+    <main role="main">
 
-<main role="main">
-
-    <section class="jumbotron text-center">
+        <section class="jumbotron text-center">
         <div class="container">
 
             <h1 class="jumbotron-heading">Category - Funny</h1>
@@ -46,7 +43,7 @@ $sample_videos = [289729765,238902809,150870038,219727723,289879647,261379936,28
         </div>
     </section>
 
-    <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light">
         <div class="container">
 
             <div class="row">
@@ -117,8 +114,8 @@ $sample_videos = [289729765,238902809,150870038,219727723,289879647,261379936,28
         </div>
     </div>
 
-    <!-- pagination -->
-    <nav aria-label="Page navigation example">
+        <!-- pagination -->
+        <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -139,7 +136,5 @@ $sample_videos = [289729765,238902809,150870038,219727723,289879647,261379936,28
     </nav>
 
 
-</main>
-
-<?php include('includes/_footer_links.php'); ?>
-<?php include('includes/_footer.php'); ?>
+    </main>
+{% endblock %}
