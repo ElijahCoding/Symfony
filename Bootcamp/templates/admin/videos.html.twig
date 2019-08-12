@@ -1,5 +1,6 @@
-<?php include('includes/_header.php'); ?>
+{% extends 'admin/base.html.twig' %}
 
+{% block mainadmin %}
 <h2>Videos / My liked videos</h2>
 
 <div class="table-responsive">
@@ -37,18 +38,19 @@
     </tbody>
   </table>
 </div>
+{% endblock %}
 
-<script>
-    function delete_video(e,video_id)
-    {
-        e.preventDefault();
-        if(confirm('Are you sure?')) 
+{% block customjavascripts %}
+    <script>
+        function delete_video(e,video_id)
         {
-            console.log(id);
-            // delete video from vimeo
-            // window.location.href = 'clear database record with Symfony';
+            e.preventDefault();
+            if(confirm('Are you sure?'))
+            {
+                console.log(id);
+                // delete video from vimeo
+                // window.location.href = 'clear database record with Symfony';
+            }
         }
-    }
-</script>
-
-<?php include('includes/_footer.php'); ?>
+    </script>
+{% endblock %}
