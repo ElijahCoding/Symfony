@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\{Request, Response};
 
 class TodoListController extends AbstractController
 {
@@ -18,9 +20,21 @@ class TodoListController extends AbstractController
     /**
      * @Route("/todo/create", name="create_task", methods={"POST"})
      */
-    public function create()
+    public function create(Request $request)
     {
-        exit('to do: create a new task!');
+        if(empty($title = trim($request->request->get('title'))))
+        return $this->redirectToRoute('todo_list');
+
+        $request->request->get('title');
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $task = new Task();
+        $task->setTitle($title);
+
+        $entityManager->persist($task);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('todo_list');
     }
 
     /**
