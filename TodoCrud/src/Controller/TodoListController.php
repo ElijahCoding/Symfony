@@ -48,7 +48,15 @@ class TodoListController extends AbstractController
      */
     public function switchStatus($id)
     {
-          exit('to do: switch status of the task!'. $id);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $task = $this->getDoctrine()
+                     ->getRepository(Task::class)
+                     ->find($id);
+
+        $task->setStatus(!$task->getStatus());
+        $entityManager->flush();
+        return $this->redirectToRoute('todo_list');
     }
 
     /**
