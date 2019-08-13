@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190813075041 extends AbstractMigration
+final class Version20190813081220 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -26,7 +26,6 @@ final class Version20190813075041 extends AbstractMigration
         $this->addSql('CREATE TABLE videos (id INT AUTO_INCREMENT NOT NULL, category_id INT DEFAULT NULL, title VARCHAR(255) NOT NULL, path VARCHAR(255) NOT NULL, duration INT NOT NULL, INDEX IDX_29AA643212469DE2 (category_id), INDEX title_idx (title), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE categories ADD CONSTRAINT FK_3AF34668727ACA70 FOREIGN KEY (parent_id) REFERENCES categories (id)');
         $this->addSql('ALTER TABLE videos ADD CONSTRAINT FK_29AA643212469DE2 FOREIGN KEY (category_id) REFERENCES categories (id)');
-        $this->addSql('DROP TABLE task');
     }
 
     public function down(Schema $schema) : void
@@ -36,7 +35,6 @@ final class Version20190813075041 extends AbstractMigration
 
         $this->addSql('ALTER TABLE categories DROP FOREIGN KEY FK_3AF34668727ACA70');
         $this->addSql('ALTER TABLE videos DROP FOREIGN KEY FK_29AA643212469DE2');
-        $this->addSql('CREATE TABLE task (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, status TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('DROP TABLE categories');
         $this->addSql('DROP TABLE videos');
     }
