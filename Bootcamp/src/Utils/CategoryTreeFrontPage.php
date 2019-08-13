@@ -4,7 +4,7 @@ namespace App\Utils;
 
 use App\Utils\AbstractClasses\CategoryTreeAbstract;
 
-abstract class CategoryTreeFrontPage extends CategoryTreeAbstract
+class CategoryTreeFrontPage extends CategoryTreeAbstract
 {
     public function getCategoryList(array $categories_array)
     {
