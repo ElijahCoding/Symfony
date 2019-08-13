@@ -11,8 +11,8 @@ class ListController extends AbstractFOSRestController
 
     }
 
-    public function getListAction()
+    public function postListsAction()
     {
-        
+
     }
 }
