@@ -8,9 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskListRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class TaskList
 {
+    use Timestamps;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -34,14 +37,9 @@ class TaskList
     private $backgroundPath;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="list")
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="list")
      */
     private $tasks;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Task", inversedBy="notes")
-     */
-    private $task;
 
     public function __construct()
     {

@@ -6,9 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NoteRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Note
 {
+    use Timestamps;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -20,6 +22,11 @@ class Note
      * @ORM\Column(type="string", length=255)
      */
     private $note;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Task", inversedBy="notes")
+     */
+    private $task;
 
     public function getId(): ?int
     {
@@ -34,6 +41,18 @@ class Note
     public function setNote(string $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getTask(): ?Task
+    {
+        return $this->task;
+    }
+
+    public function setTask(?Task $task): self
+    {
+        $this->task = $task;
 
         return $this;
     }
