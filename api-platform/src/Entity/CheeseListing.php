@@ -5,6 +5,7 @@ namespace App\Entity;
 use Carbon\Carbon;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
@@ -13,7 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  *          "get" = {},
  *          "put"
 *       },
- *      shortName="cheeses"
+*       normalizationContext={ "groups" = { "cheese_listing:read" } }
+*       denormalizationContext={ "groups" = { "cheese_listing:write" } }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\CheeseListingRepository")
  */
@@ -28,16 +30,19 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"cheese_listing:read", "cheese_listing:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"cheese_listing:read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"cheese_listing:read", "cheese_listing:write"})
      */
     private $price;
 
