@@ -22,7 +22,7 @@ class CommentAdminController extends Controller
         $q = $request->query->get('q');
         $queryBuilder = $repository->getWithSearchQueryBuilder($q);
 
-        // $comments = $repository->findAllBySearch($q);
+        // https://github.com/KnpLabs/KnpPaginatorBundle
 
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */
