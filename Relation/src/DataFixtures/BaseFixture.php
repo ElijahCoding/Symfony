@@ -15,6 +15,8 @@ abstract class BaseFixture extends Fixture
     /** @var Generator */
     protected $faker;
 
+    private $referencesIndex = [];
+
     abstract protected function loadData(ObjectManager $manager);
 
     public function load(ObjectManager $manager)
@@ -37,8 +39,7 @@ abstract class BaseFixture extends Fixture
         }
     }
 
-    protected function getRandomReference(string $className)
-    {
+    protected function getRandomReference(string $className) {
         if (!isset($this->referencesIndex[$className])) {
             $this->referencesIndex[$className] = [];
 
