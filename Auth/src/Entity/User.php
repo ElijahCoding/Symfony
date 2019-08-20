@@ -29,7 +29,7 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -37,7 +37,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
-    
+
     public function getId(): ?int
     {
         return $this->id;
