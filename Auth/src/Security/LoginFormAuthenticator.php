@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -30,11 +31,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getCredentials(Request $request)
     {
-        return [
+        $crendentials = [
             'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
+
+        $request->getSession()->set(
+            Security::LAST_USERNAME,
+            $crendentials['email']
+        );
+
+        return $crendentials;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -54,6 +62,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl()
     {
-
+        return $this->router->generate('app_login');
     }
 }
