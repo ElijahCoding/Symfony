@@ -28,8 +28,8 @@ class AccountController extends BaseController
      */
     public function accountApi()
     {
-        return $this->json(
-            $this->getUser()
-        );
+        return $this->json($this->getUser(), 200, [], [
+            'groups' => 'main'
+        ]);
     }
 }
