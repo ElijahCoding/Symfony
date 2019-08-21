@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
+use App\Entity\{User, ApiToken};
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -19,6 +19,7 @@ class UserFixture extends BaseFixture
             $user = new User();
             $user->setEmail(sprintf('spacebar%d@example.com', $i));
             $user->setFirstName($this->faker->firstName);
+
             if ($this->faker->boolean) {
                 $user->setTwitterUsername($this->faker->userName);
             }
@@ -28,6 +29,11 @@ class UserFixture extends BaseFixture
                 'hellojava'
             ));
 
+            $apiToken1 = new ApiToken($user);
+            $apiToken2 = new ApiToken($user);
+
+            $manager->persist($apiToken1);
+            $manager->persist($apiToken2);
 
             return $user;
         });
@@ -40,7 +46,7 @@ class UserFixture extends BaseFixture
             if ($this->faker->boolean) {
                 $user->setTwitterUsername($this->faker->userName);
             }
-            
+
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'engage'
