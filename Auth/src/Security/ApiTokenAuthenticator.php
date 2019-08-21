@@ -4,6 +4,7 @@ namespace App\Security;
 
 use App\Repository\ApiTokenRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -46,31 +47,39 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
             );
         }
 
+        if ($token->isExpired()) {
+            throw new CustomUserMessageAuthenticationException(
+                'Token expired'
+            );
+        }
+
         return $token->getUser();
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        dd('checking credentials');
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // todo
+        return new JsonResponse([
+            'message' => $exception->getMessageKey()
+        ], 401);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // todo
+        // allow the request to continue
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        // todo
+        throw new \Exception('Not used: entry_point from other authentication is used');
     }
 
     public function supportsRememberMe()
     {
-        // todo
+        return false;
     }
 }
