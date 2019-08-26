@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserRegistrationFormType extends AbstractType
 {
@@ -13,7 +14,9 @@ class UserRegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password')
+            ->add('plainPassword', PasswordType::class, [
+                'mapped' => false
+            ])
         ;
     }
 
