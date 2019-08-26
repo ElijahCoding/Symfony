@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\{NotBlank, Length};
 
 class UserRegistrationFormType extends AbstractType
 {
@@ -15,7 +16,17 @@ class UserRegistrationFormType extends AbstractType
         $builder
             ->add('email')
             ->add('plainPassword', PasswordType::class, [
-                'mapped' => false
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Choose a password!'
+                    ]),
+
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'At least 5 letters'
+                    ])
+                ]
             ])
         ;
     }
