@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Validator\Constraints\{NotBlank, Length};
 
 class UserRegistrationFormType extends AbstractType
@@ -28,6 +29,7 @@ class UserRegistrationFormType extends AbstractType
                     ])
                 ]
             ])
+            ->add('agreeTerms', CheckboxType::class)
         ;
     }
 
