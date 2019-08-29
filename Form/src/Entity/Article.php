@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
@@ -72,8 +72,19 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotNull(message="Please set an author")
      */
     private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $location;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $specificLocationName;
 
     public function __construct()
     {
@@ -128,16 +139,16 @@ class Article
         return $this->publishedAt;
     }
 
+    public function isPublished(): bool
+    {
+        return $this->publishedAt !== null;
+    }
+
     public function setPublishedAt(?\DateTimeInterface $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
 
         return $this;
-    }
-
-    public function isPublished()
-    {
-        return $this->publishedAt !== null;
     }
 
     public function getHeartCount(): ?int
@@ -255,6 +266,9 @@ class Article
         return $this;
     }
 
+    /**
+     * @Assert\Callback
+     */
     public function validate(ExecutionContextInterface $context, $payload)
     {
         if (stripos($this->getTitle(), 'the borg') !== false) {
@@ -262,5 +276,33 @@ class Article
                 ->atPath('title')
                 ->addViolation();
         }
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?string $location): self
+    {
+        $this->location = $location;
+
+        if (!$this->location || $this->location === 'interstellar_space') {
+            $this->setSpecificLocationName(null);
+        }
+
+        return $this;
+    }
+
+    public function getSpecificLocationName(): ?string
+    {
+        return $this->specificLocationName;
+    }
+
+    public function setSpecificLocationName(?string $specificLocationName): self
+    {
+        $this->specificLocationName = $specificLocationName;
+
+        return $this;
     }
 }

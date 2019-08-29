@@ -24,10 +24,24 @@ class UserRepository extends ServiceEntityRepository
      */
     public function findAllEmailAlphabetical()
     {
-        return $this->createQuerybuilder('u')
-                    ->orderBy('u.email', 'ASC')
-                    ->getQuery()
-                    ->execute();
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.email', 'ASC')
+            ->getQuery()
+            ->execute()
+        ;
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

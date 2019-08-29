@@ -4086,16 +4086,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.1.12",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "4bcc0f21abfc07c5d712c6da8922a31e75891f2c"
+                "reference": "360f22cdb0278d69fbd571b293df04065b2a2279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/4bcc0f21abfc07c5d712c6da8922a31e75891f2c",
-                "reference": "4bcc0f21abfc07c5d712c6da8922a31e75891f2c",
+                "url": "https://api.github.com/repos/symfony/form/zipball/360f22cdb0278d69fbd571b293df04065b2a2279",
+                "reference": "360f22cdb0278d69fbd571b293df04065b2a2279",
                 "shasum": ""
             },
             "require": {
@@ -4163,7 +4163,7 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-29T09:21:38+00:00"
+            "time": "2018-10-02T12:40:59+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -4483,16 +4483,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v4.1.12",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "abd522a6ddddba892e00003127710add0788faab"
+                "reference": "793437f519a51bca4ac9b23bdaa479bb78535f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/abd522a6ddddba892e00003127710add0788faab",
-                "reference": "abd522a6ddddba892e00003127710add0788faab",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/793437f519a51bca4ac9b23bdaa479bb78535f6c",
+                "reference": "793437f519a51bca4ac9b23bdaa479bb78535f6c",
                 "shasum": ""
             },
             "require": {
@@ -4554,7 +4554,7 @@
                 "l10n",
                 "localization"
             ],
-            "time": "2019-01-16T18:35:49+00:00"
+            "time": "2018-10-02T12:40:59+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -4698,21 +4698,21 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.12.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e"
+                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/66810b9d6eb4af54d543867909d65ab9af654d7e",
-                "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/f22a90256d577c7ef7efad8df1f0201663d57644",
+                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/intl": "~2.3|~3.0|~4.0|~5.0"
+                "symfony/intl": "~2.3|~3.0|~4.0"
             },
             "suggest": {
                 "ext-intl": "For best performance"
@@ -4720,7 +4720,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -4752,7 +4752,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -5690,16 +5690,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.1.12",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "a2956c89d13da760d07b438a0a0cd7045a628fd4"
+                "reference": "eccf669ccfa447e5b9d850cd34db3a0539867773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/a2956c89d13da760d07b438a0a0cd7045a628fd4",
-                "reference": "a2956c89d13da760d07b438a0a0cd7045a628fd4",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/eccf669ccfa447e5b9d850cd34db3a0539867773",
+                "reference": "eccf669ccfa447e5b9d850cd34db3a0539867773",
                 "shasum": ""
             },
             "require": {
@@ -5772,7 +5772,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-25T14:34:37+00:00"
+            "time": "2018-10-02T16:36:10+00:00"
         },
         {
             "name": "symfony/web-server-bundle",

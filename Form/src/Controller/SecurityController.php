@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Security\LoginFormAuthenticator;
+use App\Form\Model\UserRegistrationFormModel;
 use App\Form\UserRegistrationFormType;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,18 +46,21 @@ class SecurityController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
     {
         $form = $this->createForm(UserRegistrationFormType::class);
-
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UserRegistrationFormModel $userModel */
+            $userModel = $form->getData();
+
+            $user = new User();
+            $user->setEmail($userModel->email);
             $user->setPassword($passwordEncoder->encodePassword(
                 $user,
-                $form['plainPassword']->getData()
+                $userModel->plainPassword
             ));
-
-            if ($form['agreeTerms']->getData() === true) {
-                $user->agreeTerms();
+            // be absolutely sure they agree
+            if (true === $userModel->agreeTerms) {
+                $user->agreeToTerms();
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -72,7 +76,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('security/register.html.twig', [
-            'registrationForm' => $form->createView()
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

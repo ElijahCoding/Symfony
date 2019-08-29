@@ -4,6 +4,12 @@
     <h1>Edit the Article! 🚀</h1>
 
     {{ include('article_admin/_form.html.twig', {
-        button_text: 'Update'
+        button_text: 'Update!'
     }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/admin_article_form.js') }}"></script>
 {% endblock %}
