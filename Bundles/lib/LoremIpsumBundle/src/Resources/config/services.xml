@@ -6,8 +6,8 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="App\Service\MessageGenerator">
-            <argument type="service" id="logger"/>
+        <service id="knpu_lorem_ipsum.knpu_ipsum" class="KnpU\LoremIpsumBundle\KnpUIpsum" public="true">
+            
         </service>
     </services>
 </container>
