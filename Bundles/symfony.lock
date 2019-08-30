@@ -242,9 +242,6 @@
             "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
         }
     },
-    "symfony/polyfill-ctype": {
-        "version": "v1.10.0"
-    },
     "symfony/polyfill-mbstring": {
         "version": "v1.6.0"
     },
@@ -307,5 +304,8 @@
     },
     "twig/twig": {
         "version": "v2.4.4"
+    },
+    "weaverryan_test/lorem-ipsum-bundle": {
+        "version": "v1.0.0"
     }
 }

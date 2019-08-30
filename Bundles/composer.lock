@@ -3468,6 +3468,50 @@
                 "templating"
             ],
             "time": "2018-03-03T16:23:01+00:00"
+        },
+        {
+            "name": "weaverryan_test/lorem-ipsum-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/weaverryan/lorem-ipsum-bundle.git",
+                "reference": "36a1c475b33cd137917f2736c4748455e6fdfd46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/weaverryan/lorem-ipsum-bundle/zipball/36a1c475b33cd137917f2736c4748455e6fdfd46",
+                "reference": "36a1c475b33cd137917f2736c4748455e6fdfd46",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/config": "^3.4 || ^4.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0",
+                "symfony/http-kernel": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "^3.4 || ^4.0",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "KnpU\\LoremIpsumBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Weaver",
+                    "email": "ryan@knpuniversity.com"
+                }
+            ],
+            "description": "Happy lorem ipsum",
+            "time": "2018-03-21T14:24:42+00:00"
         }
     ],
     "packages-dev": [

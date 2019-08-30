@@ -15,7 +15,8 @@
         "symfony/lts": "^4@dev",
         "symfony/twig-bundle": "^4.0",
         "symfony/web-server-bundle": "^4.0",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "weaverryan_test/lorem-ipsum-bundle": "^1.0"
     },
     "require-dev": {
         "easycorp/easy-log-handler": "^1.0.2",
@@ -36,7 +37,6 @@
     },
     "autoload": {
         "psr-4": {
-            "KnpU\\LoremIpsumBundle\\": "lib/LoremIpsumBundle/src/",
             "App\\": "src/"
         }
     },
