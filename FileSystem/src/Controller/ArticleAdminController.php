@@ -19,7 +19,7 @@ class ArticleAdminController extends BaseController
      * @Route("/admin/article/new", name="admin_article_new")
      * @IsGranted("ROLE_ADMIN_ARTICLE")
      */
-    public function new(EntityManagerInterface $em, Request $request)
+    public function new(EntityManagerInterface $em, Request $request, UploaderHelper $uploaderHelper)
     {
         $form = $this->createForm(ArticleFormType::class);
 
@@ -28,6 +28,14 @@ class ArticleAdminController extends BaseController
             /** @var Article $article */
             $article = $form->getData();
 
+            $uploadedFile = $form['imageFile']->getData();
+
+            if ($uploadedFile) {
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+
+                $article->setImageFilename($newFilename);
+            }
+            
             $em->persist($article);
             $em->flush();
 
@@ -61,7 +69,7 @@ class ArticleAdminController extends BaseController
             $uploadedFile = $form['imageFile']->getData();
 
             if ($uploadedFile) {
-                $newFilenewFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
 
                 $article->setImageFilename($newFilename);
             }
