@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Gedmo\Sluggable\Util\Urlizer;
 
 class ArticleAdminController extends BaseController
 {
@@ -76,7 +77,10 @@ class ArticleAdminController extends BaseController
 
         $destination = $this->getParameter('kernel.project_dir') . '/public/uploads';
 
-        $uploadedFile->move($destination, $uploadedFile->getClientOriginalName());
+        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $newFilename = Urlizer::urlize($originalFilename . '-' . uniqid() . '.' . $uploadedFile->guessExtension());
+        
+        $uploadedFile->move($destination, $newFilename);
     }
 
     /**
