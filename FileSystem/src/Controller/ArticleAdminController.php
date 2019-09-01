@@ -76,7 +76,7 @@ class ArticleAdminController extends BaseController
 
         $destination = $this->getParameter('kernel.project_dir') . '/public/uploads';
 
-        dd($uploadedFile->move($destination));
+        $uploadedFile->move($destination, $uploadedFile->getClientOriginalName());
     }
 
     /**
