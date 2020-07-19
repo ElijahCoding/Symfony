@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCategoryController extends AdminBaseController
 {
     /**
-     * @Route("/admin/admin/category", name="admin_admin_category")
+     * @Route("/admin/admin/category", name="admin_category")
      */
     public function index()
     {
