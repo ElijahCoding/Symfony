@@ -34,8 +34,7 @@ class AdminCategoryController extends AdminBaseController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()){
             $category->setCreateAtValue();
             $category->setUpdateAtValue();
             $category->setIsPublished();
