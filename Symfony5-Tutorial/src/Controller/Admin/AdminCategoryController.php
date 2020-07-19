@@ -4,7 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminCategoryController extends AdminBaseController
@@ -49,9 +51,10 @@ class AdminCategoryController extends AdminBaseController
     }
 
     /**
-     * Route("/admin/category/update/{id}", name="admin_category_update")
+     * @Route("/admin/category/update/{id}", name="admin_category_update")
      * @param int $id
      * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function update(int $id, Request $request)
     {
@@ -72,7 +75,7 @@ class AdminCategoryController extends AdminBaseController
             $em->flush();
             return $this->redirectToRoute('admin_category');
         }
-        
+
         $forRender = parent::renderDefault();
         $forRender['title'] = 'Редактрование категории';
         $forRender['form'] = $form->createView();

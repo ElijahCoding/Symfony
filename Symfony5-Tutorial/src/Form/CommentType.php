@@ -15,7 +15,6 @@ class CommentType extends AbstractType
             ->add('content')
             ->add('create_at')
             ->add('is_published')
-            ->add('updated_at')
             ->add('post')
         ;
     }
