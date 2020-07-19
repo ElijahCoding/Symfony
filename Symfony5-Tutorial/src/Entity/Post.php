@@ -107,6 +107,11 @@ class Post
         return $this->create_at;
     }
 
+    public function setCreateAtValue()
+    {
+        $this->create_at = new \DateTime();
+    }
+
     public function setCreateAt(\DateTimeInterface $create_at): self
     {
         $this->create_at = $create_at;
@@ -117,6 +122,11 @@ class Post
     public function getUpdateAt(): ?\DateTimeInterface
     {
         return $this->update_at;
+    }
+
+    public function setUpdateAtValue()
+    {
+        $this->update_at = new \DateTime();
     }
 
     public function setUpdateAt(\DateTimeInterface $update_at): self

@@ -40,6 +40,11 @@ class Comment
      */
     private $is_published;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +79,11 @@ class Comment
         return $this->create_at;
     }
 
+    public function setCreateAtValue()
+    {
+        $this->create_at = new \DateTime();
+    }
+
     public function setCreateAt(\DateTimeInterface $create_at): self
     {
         $this->create_at = $create_at;
@@ -94,5 +104,22 @@ class Comment
     public function setIsDraft()
     {
         $this->is_published = self::DRAFT;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
     }
 }
