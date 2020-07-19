@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminHomeController extends AdminBaseController
 {
     /**
-     * @Route("/admin/admin/home", name="admin_home")
+     * @Route("/admin/home", name="admin_home")
      */
     public function index()
     {

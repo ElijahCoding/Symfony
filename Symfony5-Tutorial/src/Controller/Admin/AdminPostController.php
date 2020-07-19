@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminPostController extends AdminBaseController
 {
     /**
-     * @Route("/admin/admin/post", name="admin_post")
+     * @Route("/admin/post", name="admin_post")
      */
     public function index()
     {
