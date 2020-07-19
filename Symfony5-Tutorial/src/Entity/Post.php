@@ -131,11 +131,14 @@ class Post
         return $this->is_published;
     }
 
-    public function setIsPublished(bool $is_published): self
+    public function setIsPublished()
     {
-        $this->is_published = $is_published;
+        $this->is_published = self::PUBLISHED;
+    }
 
-        return $this;
+    public function setIsDraft()
+    {
+        $this->is_published = self::DRAFT;
     }
 
     /**
