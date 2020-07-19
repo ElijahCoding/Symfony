@@ -10,8 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
-    private const PUBLISHED = 1;
-    private const DRAFT = 0;
+    public const PUBLISHED = 1;
+    public const DRAFT = 0;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

@@ -11,7 +11,7 @@ class AdminPostController extends AdminBaseController
      */
     public function index()
     {
-        return $this->render('admin/admin_post/index.html.twig', [
+        return $this->render('admin/post/index.html.twig', [
             'controller_name' => 'AdminPostController',
         ]);
     }

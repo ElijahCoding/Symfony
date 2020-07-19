@@ -11,6 +11,5 @@ class AdminBaseController extends AbstractController
         return [
             'title' => 'Admin'
         ];
-
     }
 }

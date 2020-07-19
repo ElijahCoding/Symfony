@@ -12,8 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
-    private const PUBLISHED = 1;
-    private const DRAFT = 0;
+    public const PUBLISHED = 1;
+    public const DRAFT = 0;
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -56,9 +57,21 @@ class Post
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category", orphanRemoval=true)
+     */
+    private $posts;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -176,6 +189,49 @@ class Post
             // set the owning side to null (unless already changed)
             if ($comment->getPost() === $this) {
                 $comment->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?self $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(self $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(self $post): self
+    {
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+            // set the owning side to null (unless already changed)
+            if ($post->getCategory() === $this) {
+                $post->setCategory(null);
             }
         }
 
