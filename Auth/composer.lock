@@ -4491,7 +4491,7 @@
             "description": "Enforces Long Term Supported versions of Symfony components",
             "homepage": "https://symfony.com",
             "abandoned": "symfony/flex",
-            "time": "2018-04-03T05:04:16+00:00"
+            "time": "2018-10-03T12:03:19+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -5913,6 +5913,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2018-08-13T20:36:59+00:00"
         },
         {
@@ -5967,6 +5968,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],
@@ -6140,6 +6142,7 @@
                 "monolog",
                 "productivity"
             ],
+            "abandoned": true,
             "time": "2018-07-27T15:41:37+00:00"
         },
         {
@@ -6642,16 +6645,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v4.1.4",
+            "version": "v4.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "d5f433034543bbe3b0dfa2f34e6cc85bf839846f"
+                "reference": "cc546f59d55f63010ff4d4f40a2af39526842524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/d5f433034543bbe3b0dfa2f34e6cc85bf839846f",
-                "reference": "d5f433034543bbe3b0dfa2f34e6cc85bf839846f",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/cc546f59d55f63010ff4d4f40a2af39526842524",
+                "reference": "cc546f59d55f63010ff4d4f40a2af39526842524",
                 "shasum": ""
             },
             "require": {
@@ -6704,7 +6707,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-08-27T17:47:02+00:00"
+            "time": "2019-04-16T09:37:00+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
@@ -6945,5 +6948,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.1.3"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
